@@ -9,17 +9,13 @@ List<Map<String, dynamic>> toQuillData(List zefyrData) {
     if (zefyrDelta.containsKey('insert')) {
       quillDelta['insert'] = zefyrDelta['insert'];
     }
-    if (zefyrDelta.containsKey('delete')) {
-      quillDelta['delete'] = zefyrDelta['delete'];
-    }
-    if (zefyrDelta.containsKey('retain')) {
-      quillDelta['retain'] = zefyrDelta['retain'];
-    }
     if (zefyrDelta.containsKey('attributes')) {
       quillDelta['attributes'] =
           _toQuillAttributes(zefyrDelta['attributes'] as Map);
     }
-    quillData.add(quillDelta);
+    if (quillDelta.isNotEmpty) {
+      quillData.add(quillDelta);
+    }
   });
   return quillData;
 }
